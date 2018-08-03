@@ -41,7 +41,7 @@ public:
 		speed[1]*=1.2;
 		pos[0] += speed[0];
 		pos[1] += speed[1];
-		if((pos[0]>MAP_SIZE) || (pos[1]>MAP_SIZE)){
+		if(( abs(pos[0]) > MAP_SIZE ) || ( abs(pos[1]) > MAP_SIZE )){
 			newPosition();
 			prev = pos;
 		}
