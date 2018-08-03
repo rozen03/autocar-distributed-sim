@@ -2,7 +2,7 @@
 #define CAR_H
 #include <cstdlib>
 #include <unistd.h>
-#include <math.h>
+#include <cmath>
 #include <array>
 #include <mpi.h>
 #include <pthread.h>
