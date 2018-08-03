@@ -51,8 +51,9 @@ int runCar(){
         double col;
         if ( dist <= 10 ){
         //TODO:Log collision without losing performance
-            printf("[%d] COLISIONA! con [%d] dist=%f\n",
-                mpi_rank, status.MPI_SOURCE, dist);
+            car.choques++;
+            printf("[%d] COLISIONA! con [%d] dist=%f - %d\n",
+                mpi_rank, status.MPI_SOURCE, dist,car.choques);
         }else if ((col  = colide(l1, l2)) && col <= 10 && -1 < col ){
             car.newSpeed();
             printf("[%d] COLISIONARA con [%d] dist=%f\n",

@@ -16,6 +16,7 @@ public:
 	Point prev;
 	Point speed;
  	double time;
+	int choques;
     double getRand(int off,int limit){
     	return (rand()*(off+1)) % limit;
     }
@@ -27,6 +28,7 @@ public:
 		prev=pos;
 		newSpeed();
 		this->time=0;
+		choques=0;
 	}
 	void newPosition() {
 		pos={getRand(rank,50),getRand(rank,50),0};
