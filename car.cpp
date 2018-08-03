@@ -43,17 +43,20 @@ int runCar(){
 	while (true) {
         //TODO: search any useful tag other than Position
 		MPI_Probe(MPI_ANY_SOURCE,MPI_ANY_TAG,MPI_COMM_WORLD,&status);
-		MPI_Recv(&bufferPoint, 3, MPI_DOUBLE, status.MPI_SOURCE, TAG_NEW_POSITION, MPI_COMM_WORLD, &status);
+		MPI_Recv(&bufferPoint, 3, MPI_DOUBLE, status.MPI_SOURCE,
+             TAG_NEW_POSITION, MPI_COMM_WORLD, &status);
         double dist = distance(car.pos, bufferPoint);
 		Line l1(car.prev, car.pos);
 		Line l2(pos[status.MPI_SOURCE], bufferPoint);
-		double col  = colide(l1, l2);
+        double col;
         if ( dist <= 10 ){
         //TODO:Log collision without losing performance
-            printf("[%d] COLISIONA! con [%d] dist=%f\n",mpi_rank,status.MPI_SOURCE,dist);
-        }else if ( col <= 10 && -1 < col ){
+            printf("[%d] COLISIONA! con [%d] dist=%f\n",
+                mpi_rank, status.MPI_SOURCE, dist);
+        }else if ((col  = colide(l1, l2)) && col <= 10 && -1 < col ){
             car.newSpeed();
-            printf("[%d] COLISIONARA con [%d] dist=%f\n",mpi_rank,status.MPI_SOURCE,col);
+            printf("[%d] COLISIONARA con [%d] dist=%f\n",
+            mpi_rank, status.MPI_SOURCE, col);
         }
 		pos[status.MPI_SOURCE]=bufferPoint;
 	}
