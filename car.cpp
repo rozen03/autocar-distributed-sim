@@ -69,7 +69,9 @@ int main(int argc, char **argv){
 	**TODO:Test thread support for sending and recieving concurrenctly
 	*/
   	int provided;
-	int initStatus= MPI_Init_thread( &argc, &argv, MPI_THREAD_SERIALIZED, &provided );
+	// int initStatus= MPI_Init_thread( &argc, &argv, MPI_THREAD_SERIALIZED, &provided );
+    int initStatus= MPI_Init_thread( &argc, &argv, MPI_THREAD_MULTIPLE, &provided );
+
 	if (initStatus != MPI_SUCCESS){
 		fprintf(stderr, "MPI Error al inicializar.\n");
 		MPI_Abort(MPI_COMM_WORLD, initStatus);
