@@ -43,6 +43,7 @@ public:
 		pos[1] += speed[1];
 		if(( abs(pos[0]) > MAP_SIZE ) || ( abs(pos[1]) > MAP_SIZE )){
 			newPosition();
+			newSpeed();
 			prev = pos;
 		}
 		pos[2] = this->time;
