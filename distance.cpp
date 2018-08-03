@@ -1,13 +1,8 @@
 #include "distance.h"
 
 
-//la puta norma!
-inline double norm(double x,double y, double z){
-	return sqrt(pow(x,2)+ pow(y,2)+pow(z,2));
-}
-
-//I guess this works aprox
-double distance(Line line1, Line line2) {
+//I guess this works aprox...
+double colide(Line line1, Line line2) {
     	double x01 = line1.x0;
     	double x02 = line2.x0;
     	double y01 = line1.y0;
