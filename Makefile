@@ -2,7 +2,7 @@
 
 MPIROOT = /usr
 
-CFLAGS+= -Wall -std=c++11 -pthread -g $(INCL)
+CFLAGS+= -Wall -std=c++11 -pthread -O3 -g $(INCL)
 CC=gcc
 MPICC=  $(MPIROOT)/bin/mpic++
 INCL= -I$(MPIROOT)/include
@@ -13,7 +13,7 @@ BIN= car
 all: car
 
 $(BIN): $(SRCS)
-	$(MPICC) $(CFLAGS) -o $(BIN) $(SRCS)
+	$(MPICC) $(CFLAGS) -o  $(BIN) $(SRCS)
 
 clean:
 	rm -f $(BIN) *.o
