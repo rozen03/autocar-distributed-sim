@@ -1,7 +1,7 @@
 #include "distance.h"
 
 
-//I guess this works aprox...
+//I guess this works aprox....
 double colide(Line line1, Line line2) {
     	double x01 = line1.x0;
     	double x02 = line2.x0;
