@@ -29,14 +29,15 @@ void* moveCar(void *ptr){
 		sleep(1);
   	}
 }
+
 int runCar(){
     //Reserves the position of every node/car in the map
 	Point pos[total_nodes];
 	car = Car(mpi_rank);
 
     //Start moving in parallel so stoping is not an option
-	pthread_t movicion;//Change this var name properly
-	pthread_create(&movicion, NULL, moveCar, NULL);
+	pthread_t movingCar_Thread;//Change this var name properly
+	pthread_create(&movingCar_Thread, NULL, moveCar, NULL);
 
 	MPI_Status status;
 	Point bufferPoint;
@@ -63,6 +64,7 @@ int runCar(){
 	}
 	return 0;
 }
+
 int main(int argc, char **argv){
 	srand (time(NULL));
 	/*Init MPI with threading support
